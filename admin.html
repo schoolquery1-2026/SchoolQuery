@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" class="h-screen overflow-hidden">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrativo - SchoolQuery</title>
+    <link rel="icon" href="logo _alumno_2.ico" type="image/ico">
+  <script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=YMEsnOH0UbC0A0q_R0JrJbMvc2ZxoHy4w4Uzdkc2wtp8ZJB44e8pcjS2Dw0B-Due9tRcmJNN4aK4VaAefDkpDFjRyBS1t2UBlss0vtYFja5vT3ES_CxzphNtS-dGBp4HCQ_rWiYGkNK6jlK-s8Rtq1r2_lhEcxzeSqDZyTIOfN3kqAO4YiSyR06Yo7aJS9ydaZ_apsOHXc86WUAE0ZseQ_s1Z4j7dJDXzTnu14fuLvEIsSyWQTzHUdEg3Tgw2ornY2uYsiHxZDdlzpF504SV6J54CVWr_OxCv7kgC_SW0hyGZ-R-8j21A86kdy8PCM-t" charset="UTF-8"></script><script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style5.css">
+  <link rel="icon" href="logo _alumno_2.ico" type="image/ico">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="h-screen overflow-hidden flex">
+
+  <aside class="w-72 h-full shrink-0">
+    <div>
+      <div class="px-6 py-6 border-b border-gray-200 flex items-center gap-3">
+        <img src="logo_alummno.png" alt="SchoolQuery" class="h-10 w-auto error-fallback">
+        <div>
+          <h2 class="text-xl font-black text-gray-900 tracking-wider">
+            SCHOOLQUERY
+          </h2>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-gray-500">Panel de Control</span>
+        </div>
+      </div>
+
+      <nav class="mt-6 px-4 space-y-2">
+        <button id="link-dashboard" onclick="showSection('dashboard')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-white bg-blue-600 font-semibold shadow-md">
+          <i class="fas fa-chart-pie text-lg w-6"></i>
+          <span>Vista General</span>
+        </button>
+
+        <button id="link-estudiantes" onclick="showSection('estudiantes')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-gray-600 hover:text-blue-600 hover:bg-gray-50">
+          <i class="fas fa-user-graduate text-lg w-6"></i>
+          <span>Registrar Estudiantes</span>
+        </button>
+
+        <button id="link-maestros" onclick="showSection('maestros')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-gray-600 hover:text-blue-600 hover:bg-gray-50">
+          <i class="fas fa-chalkboard-teacher text-lg w-6"></i>
+          <span>Registrar Profesores</span>
+        </button>
+
+        <button id="link-grupos" onclick="showSection('grupos')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-gray-600 hover:text-blue-600 hover:bg-gray-50">
+          <i class="fas fa-users text-lg w-6"></i>
+          <span>Gestión de Grupos</span>
+        </button>
+
+        <button id="link-notes" onclick="showSection('notes')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-gray-600 hover:text-blue-600 hover:bg-gray-50">
+          <i class="fas fa-book-open text-lg w-6"></i>
+          <span>Calificaciones</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-1">
+      <button onclick="volverPaginaPrincipal()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition duration-150 font-medium text-sm text-left">
+        <i class="fas fa-arrow-left text-blue-500"></i>
+        <span>Volver al Inicio</span>
+      </button>
+
+      <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:text-red-700 hover:bg-red-50 transition duration-150 font-medium text-sm text-left">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Cerrar Sesión Admin</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="flex-1 h-full overflow-y-auto bg-gray-100">
+    
+    <header class="h-20 shrink-0 flex-none border-b border-gray-200 bg-white px-8 flex items-center justify-between z-10">
+      <h1 id="pageTitle" class="text-2xl font-bold text-gray-800 tracking-tight">Dashboard Administrativo</h1>
+      <div class="flex items-center gap-3">
+        <div class="text-right hidden sm:block">
+          <p class="text-sm font-semibold text-gray-800">Administrador</p>
+          <p class="text-xs text-gray-500 font-medium">Soporte TI</p>
+        </div>
+        <div class="w-10 h-10 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-blue-600 font-bold">
+          AD
+        </div>
+      </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto p-8 space-y-8">
+
+      <div id="dashboard" class="section space-y-8">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 relative overflow-hidden shadow-sm">
+            <div class="absolute right-4 top-4 text-gray-100 text-5xl font-bold"><i class="fas fa-user-graduate"></i></div>
+            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Estudiantes</p>
+            <h3 id="total_estudiantes" class="text-4xl font-black text-gray-800 mt-2 tracking-tight">⏳</h3>
+            <div class="mt-2 text-xs text-blue-500 font-semibold flex items-center gap-1">Sincronizado</div>
+          </div>
+          
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 relative overflow-hidden shadow-sm">
+            <div class="absolute right-4 top-4 text-gray-100 text-5xl font-bold"><i class="fas fa-chalkboard-teacher"></i></div>
+            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Profesores</p>
+            <h3 id="total_maestros" class="text-4xl font-black text-gray-800 mt-2 tracking-tight">⏳</h3>
+            <div class="mt-2 text-xs text-blue-500 font-semibold flex items-center gap-1">Sincronizado</div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 relative overflow-hidden shadow-sm">
+            <div class="absolute right-4 top-4 text-gray-100 text-5xl font-bold"><i class="fas fa-users"></i></div>
+            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Grupos Activos</p>
+            <h3 id="total_grupos" class="text-4xl font-black text-gray-800 mt-2 tracking-tight">⏳</h3>
+            <div class="mt-2 text-xs text-blue-500 font-semibold flex items-center gap-1">Estructuras Únicas</div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 relative overflow-hidden shadow-sm">
+            <div class="absolute right-4 top-4 text-gray-100 text-5xl font-bold"><i class="fas fa-book-open"></i></div>
+            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Notas</p>
+            <h3 id="total_notes" class="text-4xl font-black text-gray-800 mt-2 tracking-tight">⏳</h3>
+            <div class="mt-2 text-xs text-blue-500 font-semibold flex items-center gap-1">Evaluaciones</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-1 gap-8 mt-12">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                <i class="fas fa-user-graduate text-blue-500"></i> Alumnos Registrados
+              </h3>
+            </div>
+            <div id="tabla_estudiantes_dashboard" class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm bg-white">
+              <p class="text-gray-500 italic text-sm p-4">Consultando base de datos...</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                <i class="fas fa-chalkboard-teacher text-blue-500"></i> Cuerpo Docente
+              </h3>
+            </div>
+            <div id="tabla_maestros_dashboard" class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm bg-white">
+              <p class="text-gray-500 italic text-sm p-4">Consultando base de datos...</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                <i class="fas fa-file-invoice text-blue-500"></i> Calificaciones Registradas
+              </h3>
+            </div>
+            <div id="tabla_notas_dashboard" class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm bg-white">
+              <p class="text-gray-500 italic text-sm p-4">Cargando calificaciones...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="estudiantes" class="section hidden max-w-2xl bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2"><i class="fas fa-user-plus text-blue-500"></i> Inscribir Nuevo Estudiante</h3>
+        <form id="formEstudiante" onsubmit="event.preventDefault(); registrarEstudiante();" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Nombre</label>
+              <input type="text" id="nombre" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Apellido</label>
+              <input type="text" id="apellido" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Correo Electrónico Institucional</label>
+            <input type="email" id="correo" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Fecha de Nacimiento</label>
+              <input type="date" id="fecha_nacimiento" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Asignar Grupo Inicial</label>
+              <select id="id_grupo_estudiante" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+                <option value="" disabled selected>Cargando grupos...</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-md transition-all">Registrar Estudiante</button>
+        </form>
+      </div>
+
+      <div id="maestros" class="section hidden max-w-2xl bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2"><i class="fas fa-plus-circle text-blue-500"></i> Registrar Nuevo Profesor</h3>
+        <form id="formMaestro" onsubmit="event.preventDefault(); registrarMaestro();" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Nombre</label>
+              <input type="text" id="m_nombre" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Apellido</label>
+              <input type="text" id="m_apellido" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Correo de Contacto</label>
+            <input type="email" id="correo_maestro" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Especialidad Académica</label>
+            <select id="especialidad" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+              <option value="" disabled selected>Seleccione una Especialidad</option>
+              <option value="matematicas">Matemáticas</option>
+              <option value="ciencias">Ciencias Naturales</option>
+              <option value="historia">Historia y Geografía</option>
+              <option value="lenguaje">Lengua y Literatura</option>
+              <option value="ingles">Inglés</option>
+              <option value="educacion_fisica">Educación Física</option>
+              <option value="programacion">Programación / Informática</option>
+              <option value="artes">Artes y Música</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-md transition-all">Registrar Docente</button>
+        </form>
+      </div>
+
+      <div id="grupos" class="section hidden space-y-8">
+        <div class="max-w-2xl bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+          <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2"><i class="fas fa-folder-plus text-blue-500"></i> Inicializar Nuevo Grupo</h3>
+          <form id="formGrupo" onsubmit="event.preventDefault(); crearGrupo();" class="space-y-5">
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm mt-8 col-span-1 md:col-span-2">
+  
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                <div>
+                  <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                    <i class="fas fa-table text-blue-500"></i> Registro General de Grupos
+                  </h3>
+                  <p class="text-xs text-gray-500 mt-1">Consulta los alumnos y docentes asignados a cada código de grupo activo.</p>
+                </div>
+                <div class="w-full sm:w-64">  
+                  <label class="block text-[10px] font-bold text-gray-600 uppercase mb-1 tracking-wider">Filtrar por Código</label>
+                      <select id="filtro_id_grupo" onchange="cargarTablaGrupos()" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-blue-500 font-semibold transition-all">
+                      <option value="todos">Mostrar Todos</option>
+                    </select>
+                  </div>
+                </div>
+                  <div class="overflow-x-auto border border-gray-100 rounded-xl shadow-inner">
+                    <table class="min-w-full divide-y divide-gray-200 text-sm text-left text-gray-700">
+                      <thead class="bg-gray-50 text-gray-600 uppercase text-xs font-bold tracking-wider">
+                        <tr>
+                          <th class="px-6 py-4">Código Grupo</th>
+                          <th class="px-6 py-4">Docente Encargado</th>
+                          <th class="px-6 py-4">Estudiante Miembro</th>
+                          <th class="px-6 py-4 text-center">Acción</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbody_grupos" class="divide-y divide-gray-100 bg-white">
+                        <tr>
+                          <td colspan="4" class="px-6 py-8 text-center text-gray-400 italic">
+                            Cargando registros de grupos... ⏳
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Código Único del Grupo</label>
+              <input type="text" id="id_grupo" placeholder="Ej: 11VO-A" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Correo Maestro Encargado</label>
+                <input type="email" id="g_correo_maestro" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Correo Estudiante Integrante</label>
+                <input type="email" id="g_correo_estudiante" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+              </div>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-md transition-all">Inicializar Grupo</button>
+          </form>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl">
+          
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+            <h4 class="font-bold text-md text-gray-800 mb-4">Vincular Docente Extra a Grupo</h4>
+            <form id="formAsignarMaestro" onsubmit="event.preventDefault(); asignarMaestroAGrupo();" class="space-y-4">
+              <select id="id_grupo_asignar_maestro" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2 text-gray-900"><option value="">Seleccione Grupo</option></select>
+              <input type="email" id="g_correo_maestro_asignar" placeholder="Correo del Docente" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2 text-gray-900">
+              <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-sm transition-all shadow-sm">Asignar Docente</button>
+            </form>
+          </div>
+          
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+            <h4 class="font-bold text-md text-gray-800 mb-4">Migrar / Agregar Estudiante a Grupo</h4>
+            <form id="formAsignarEstudiante" onsubmit="event.preventDefault(); asignarEstudianteAGrupo();" class="space-y-4">
+              <select id="id_grupo_asignar_estudiante" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2 text-gray-900"><option value="">Seleccione Grupo</option></select>
+              <input type="email" id="g_correo_estudiante_asignar" placeholder="Correo del Alumno" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2 text-gray-900">
+              <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-sm transition-all shadow-sm">Migrar Alumno</button>
+            </form>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+            <h4 class="font-bold text-md text-gray-800 mb-4">Migrar Código de Grupo</h4>
+            <form id="formMigrarCodigo" onsubmit="event.preventDefault(); migrarCodigoGrupo();" class="space-y-4">
+              <select id="id_grupo_actual_migrar" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2 text-gray-900">
+                <option value="" disabled selected>Seleccione grupo actual...</option>
+              </select>
+              <select id="id_grupo_nuevo_migrar" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2 text-gray-900">
+                <option value="" disabled selected>Seleccione grupo nuevo...</option>
+              </select>
+              <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-sm transition-all shadow-sm">Migrar Código</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="notes" class="section hidden max-w-2xl bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2"><i class="fas fa-file-invoice text-blue-500"></i> Registrar Calificaciones Académicas</h3>
+        <form id="formNota" onsubmit="event.preventDefault(); registrarNota();" class="space-y-5">
+          <div>
+            <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Correo del Estudiante</label>
+            <input type="email" id="n_correo_estudiante" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Materia (ID)</label>
+            <input type="text" id="id_materia" placeholder="Ej: MAT-101" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Parcial I</label>
+              <input type="number" min="0" max="100" id="parcial1" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Parcial II</label>
+              <input type="number" min="0" max="100" id="parcial2" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Nota Final</label>
+              <input type="number" min="0" max="100" id="final_anual" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500">
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-md transition-all">Subir Calificación</button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

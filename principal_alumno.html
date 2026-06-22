@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>SchoolQuery · Mis Notas 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="styles8.css">
+<link rel="icon" href="logo _alumno_2.ico" type="image/ico">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo_alummno.png" alt="Logo SchoolQuery">
+    <span class="logo-text">SchoolQuery</span>
+  </div>
+  <div class="header-right">
+    <div class="welcome-badge">
+      <i class="fas fa-smile-wink"></i>
+      <span class="welcome-text">¡Bienvenido/a,</span>
+      <span class="welcome-name" id="userName">Estudiante</span>
+      <span class="welcome-text">!</span>
+    </div>
+    <div class="header-badge">
+      <i class="fas fa-calendar-alt"></i>
+      <span>2026</span>
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+    <button class="btn-cerrar-sesion" id="btnCerrarSesion">
+      <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+    </button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="hero-section">
+    <div>
+      <h1>
+        <i class="fas fa-chart-line"></i>
+        Mis Notas
+      </h1>
+      <div class="subtitle">
+        <i class="fas fa-eye"></i>
+        Consulta aquí tus calificaciones — sigue tu progreso académico
+      </div>
+    </div>
+    <div class="resumen-cards">
+      <div class="stat">
+        <i class="fas fa-book-open"></i>
+        <span class="stat-value" id="totalMaterias">0</span>
+        <span>materias</span>
+      </div>
+      <div class="stat">
+        <i class="fas fa-check-circle"></i>
+        <span class="stat-value" id="aprobadasCount">0</span>
+        <span>aprobadas</span>
+      </div>
+      <div class="stat">
+        <i class="fas fa-star"></i>
+        <span class="stat-value" id="promedioGeneral">0.0</span>
+        <span>promedio</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-card">
+    <div class="warning-icon">⏳</div>
+    <div class="warning-message">
+      <span>📢 <strong>Estado académico:</strong></span>
+      <span class="warning-text">🎓 Te falta 1 año de carrera para finalizar tu plan de estudios</span>
+      <span style="font-size:0.8rem; background:#ffefc0; padding:4px 14px; border-radius:50px; font-weight:600;">🚀 ¡Sigue esforzándote!</span>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="grades-table" id="notasTable">
+      <thead>
+        <tr>
+          <th><i class="fas fa-book"></i> Asignatura</th>
+          <th><i class="fas fa-file-alt"></i> 1er Parcial</th>
+          <th><i class="fas fa-file-alt"></i> 2do Parcial</th>
+          <th><i class="fas fa-flag-checkered"></i> Final</th>
+          <th><i class="fas fa-calculator"></i> Promedio</th>
+          <th><i class="fas fa-clipboard-list"></i> Estado</th>
+        </tr>
+      </thead>
+      <tbody id="tablaNotasBody">
+        <tr>
+          <td colspan="6" style="text-align: center; padding: 40px;">
+            <i class="fas fa-spinner fa-pulse"></i> Cargando calificaciones...
+           </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer-note">
+    <span class="tooltip-icon"><i class="fas fa-chart-simple"></i> Promedio = (P1 + P2 + Final) / 3</span>
+    <span class="tooltip-icon"><i class="fas fa-check-circle"></i> Aprobado desde ≥ 70 pts</span>
+    <span class="tooltip-icon"><i class="fas fa-school"></i> SchoolQuery · Sistema de Gestión Académica</span>
+  </div>
+</div>
+</body>
+<script type="module" src="principal_alumno.js"></script>
+</html>

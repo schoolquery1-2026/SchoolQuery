@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>SchoolQuery · Master panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <link rel="icon" href="logo _alumno_2.ico" type="image/ico">
+  <link rel="stylesheet" href="styles4.css">
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <img src="logo_alummno.png" alt="SchoolQuery" width="44" height="44" onerror="this.style.display='none'">
+    <span class="logo-text">SchoolQuery</span>
+  </div>
+  <div class="header-badge">
+    <span>Panel Docente · 2026</span>
+    <span>✏️</span>
+  </div>
+</header>
+
+<div class="container animate-fade-in">
+
+  <div id="errorMaestro" class="error-container" style="display:none; background:#fff5f5; color:#c53030; padding:1rem; border-radius:8px; margin-bottom:1rem; border:1px solid #fed7d7;"></div>
+
+  <div class="teacher-card">
+    <div class="teacher-info">
+      <div class="teacher-icon">👨‍🏫</div>
+      <div>
+        <span class="teacher-name" id="teacherName">Cargando maestro…</span>
+        <span class="teacher-detail" id="grupoInfo">Estableciendo canal seguro con Firestore...</span>
+      </div>
+    </div>
+    <div class="save-status">
+      <span class="badge-edition">✍️ Edición Directa</span>
+      <span class="auto-save-indicator">Auto-guardado activo</span>
+      <button id="logoutBtn" class="logout-btn">
+        🚪 Cerrar Sesión
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+    
+    <aside class="groups-panel">
+      <div class="groups-panel-header">
+        <h3>📚 Mis Materias y Grupos</h3>
+      </div>
+      
+      <div class="search-group-box">
+        <input type="text" id="groupSearchInput" placeholder="🔍 Buscar grupo o materia asignada..." autocomplete="off">
+      </div>
+
+      <div id="grupoSelector" class="groups-selector-container">
+        <div class="loading-state">
+          ⏳ Inicializando catálogo de grupos...
+        </div>
+      </div>
+    </aside>
+
+    <main class="content-panel">
+      <div class="hero-section">
+        <div>
+          <h1>Gestión de Calificaciones</h1>
+          <div class="subtitle" id="grupoSubtitle">Por favor, selecciona una de tus asignaturas asignadas</div>
+        </div>
+        <div class="action-buttons">
+          <button class="save-btn" id="saveAllBtn">💾 Guardar Todo</button>
+          <button class="reset-btn" id="resetBtn">⟳ Restaurar</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="grades-table" id="gradesTable">
+          <thead>
+            <tr>
+              <th>Estudiante</th>
+              <th>Asignatura</th>
+              <th>Grupo</th>
+              <th class="col-short">1er Parcial</th>
+              <th class="col-short">2do Parcial</th>
+              <th class="col-short">Final</th>
+              <th class="col-short">Promedio</th>
+              <th>Estado</th>
+              <th class="col-sync">Sync</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td colspan="9" class="table-placeholder">
+                <div class="placeholder-icon" style="font-size:2rem; margin-bottom:0.5rem;">🔐</div>
+                <strong>Esperando autenticación</strong><br>
+                <span>Validando credenciales de acceso con Firebase Auth.</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer-note">
+    <span class="tooltip-icon" title="(Parcial 1 + Parcial 2 + Final) ÷ 3">📐 Promedio = (P1 + P2 + Final) / 3</span>
+    <span class="tooltip-icon" title="Se requiere 70 puntos o más para aprobar">✅ Mínimo aprobatorio: 70 pts</span>
+    <span class="tooltip-icon" title="Los cambios se guardan automáticamente después de editar">⚡ Auto-guardado activo con debounce (600ms)</span>
+    <span class="tooltip-icon" title="Los datos se sincronizan en tiempo real con Firestore">🔄 Sincronización Realtime</span>
+  </footer>
+</div>
+
+<script src="maestro.js"></script>
+</body>
+</html>

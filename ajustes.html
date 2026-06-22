@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajustes de Perfil - SchoolQuery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="logo _alumno_2.ico" type="image/ico">
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+  <header class="bg-white shadow-sm py-6 mb-10">
+    <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="logo_alummno.png" alt="Logo" class="h-10 w-auto">
+        <span class="text-xl font-bold text-slate-800">SchoolQuery</span>
+      </a>
+      <a href="perfil.html" class="text-blue-600 hover:underline font-medium text-sm">Regresar a Perfil</a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      
+      <div class="lg:col-span-1 space-y-2">
+        <button class="w-full flex items-center gap-3 px-6 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-200 transition">
+          <i class="fas fa-user-cog"></i> General
+        </button>
+        <button class="w-full flex items-center gap-3 px-6 py-4 text-slate-600 hover:bg-white rounded-2xl font-medium transition">
+          <i class="fas fa-bell"></i> Notificaciones
+        </button>
+        <button class="w-full flex items-center gap-3 px-6 py-4 text-slate-600 hover:bg-white rounded-2xl font-medium transition">
+          <i class="fas fa-shield-alt"></i> Privacidad
+        </button>
+        <a href="password.html" class="w-full flex items-center gap-3 px-6 py-4 text-red-500 hover:bg-red-50 rounded-2xl font-medium transition mt-4">
+          <i class="fas fa-key"></i> Seguridad
+        </a>
+      </div>
+
+      <div class="lg:col-span-3 space-y-6">
+        
+        <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
+          <h3 class="text-lg font-bold text-slate-800 mb-6">Foto de Perfil</h3>
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="relative group">
+              <div class="w-32 h-32 bg-slate-100 rounded-3xl flex items-center justify-center text-slate-300 overflow-hidden border-2 border-dashed border-slate-200">
+                <i class="fas fa-user text-4xl group-hover:hidden"></i>
+                <img id="preview" class="hidden w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 items-center justify-center text-white hidden group-hover:flex transition cursor-pointer">
+                  <i class="fas fa-camera"></i>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-3 flex-1">
+              <p class="text-sm text-slate-500 italic">Formatos permitidos: JPG, PNG. Tamaño máximo 2MB.</p>
+              <div class="flex gap-3">
+                <label class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold cursor-pointer hover:bg-blue-700 transition">
+                  Subir nueva foto
+                  <input type="file" class="hidden">
+                </label>
+                <button class="text-red-500 text-sm font-bold hover:bg-red-50 px-4 py-2 rounded-xl transition">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[2.5rem] p-10 shadow-sm border border-slate-100">
+          <h3 class="text-lg font-bold text-slate-800 mb-8 flex items-center gap-2">
+            <i class="fas fa-info-circle text-blue-600"></i> Información de Contacto
+          </h3>
+          
+          <form class="grid md:grid-cols-2 gap-6">
+            <div class="md:col-span-1">
+              <label class="block text-xs font-black text-slate-400 uppercase mb-2 ml-1">Correo Institucional</label>
+              <div class="relative">
+                <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="email" placeholder="estudiante@ejemplo.com" class="w-full pl-12 pr-6 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-600">
+              </div>
+            </div>
+
+            <div class="md:col-span-1">
+              <label class="block text-xs font-black text-slate-400 uppercase mb-2 ml-1">Número Telefónico</label>
+              <div class="relative">
+                <i class="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="tel" placeholder="+505 0000-0000" class="w-full pl-12 pr-6 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-600">
+              </div>
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="block text-xs font-black text-slate-400 uppercase mb-2 ml-1">Dirección de Domicilio</label>
+              <div class="relative">
+                <i class="fas fa-map-marker-alt absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="text" placeholder="Barrio, Calle, Ciudad" class="w-full pl-12 pr-6 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-600">
+              </div>
+            </div>
+
+            <hr class="md:col-span-2 border-slate-100 my-4">
+
+            <div class="md:col-span-2">
+              <h3 class="text-lg font-bold text-slate-800 mb-6">Preferencias del Sistema</h3>
+              <div class="space-y-4">
+                <label class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl cursor-pointer hover:bg-slate-100 transition">
+                  <div class="flex items-center gap-3">
+                    <i class="fas fa-moon text-indigo-500"></i>
+                    <span class="font-medium text-slate-700">Modo Oscuro</span>
+                  </div>
+                  <input type="checkbox" class="w-6 h-6 rounded-lg border-slate-300 text-blue-600 focus:ring-blue-500">
+                </label>
+                
+                <label class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl cursor-pointer hover:bg-slate-100 transition">
+                  <div class="flex items-center gap-3">
+                    <i class="fas fa-paper-plane text-green-500"></i>
+                    <span class="font-medium text-slate-700">Recibir notas por Correo</span>
+                  </div>
+                  <input type="checkbox" checked class="w-6 h-6 rounded-lg border-slate-300 text-blue-600 focus:ring-blue-500">
+                </label>
+              </div>
+            </div>
+
+            <div class="md:col-span-2 flex flex-col sm:flex-row gap-4 pt-6">
+              <button type="submit" class="flex-1 bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-700 transition shadow-lg shadow-blue-100 hover:scale-[1.02] active:scale-95">
+                <i class="fas fa-save mr-2"></i> Guardar Cambios
+              </button>
+              <button type="button" class="flex-1 bg-slate-100 text-slate-600 font-bold py-4 rounded-2xl hover:bg-slate-200 transition">
+                Restablecer Todo
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="text-center py-10 text-slate-400 text-sm">
+    &copy; 2026 SchoolQuery - Panel de Configuración Académica
+  </footer>
+
+</body>
+</html>

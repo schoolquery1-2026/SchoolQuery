@@ -1,0 +1,263 @@
+/* ============================================================
+   DESIGN SYSTEM - SCHOOLQUERY SUITE BLUE (Celestes y Azules)
+   ============================================================ */
+
+:root {
+  --primary-blue: #2c5282;      /* Azul Oscuro de Contraste */
+  --sky-blue: #4299e1;          /* Celeste Corporativo Escolar */
+  --light-sky: #ebf8ff;         /* Celeste de Fondo de Fila Activa */
+  --border-blue: #bee3f8;        /* Bordes Finos Celestes */
+  --text-dark: #2d3748;         /* Color de Texto Principal */
+  --success-green: #2f855a;
+  --danger-red: #c53030;
+  --radius-normal: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f7fafc;
+  background-image: linear-gradient(180deg, #edf2f7 0%, #f7fafc 100%);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* --- CABECERA --- */
+header {
+  background: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 3px solid var(--sky-blue);
+}
+
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  font-family: 'DM Serif Display', serif;
+}
+
+.header-badge {
+  background: var(--light-sky);
+  color: var(--primary-blue);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* --- DISEÑO DASHBOARD --- */
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.teacher-card {
+  background: white;
+  border-radius: var(--radius-normal);
+  padding: 1.2rem 1.8rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-blue);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.teacher-info { display: flex; align-items: center; gap: 12px; }
+.teacher-name { font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); }
+.teacher-detail { font-size: 0.85rem; color: #718096; display: block; }
+
+.logout-btn {
+  background: #fff5f5;
+  color: var(--danger-red);
+  border: 1px solid #fed7d7;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.logout-btn:hover { background: var(--danger-red); color: white; }
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  gap: 1.5rem;
+}
+
+/* --- SECCIÓN BUSCADOR Y LISTADO LATERAL --- */
+.groups-panel {
+  background: white;
+  border-radius: var(--radius-normal);
+  padding: 1.2rem;
+  border: 1px solid var(--border-blue);
+}
+
+.groups-panel-header h3 {
+  font-size: 0.85rem;
+  color: var(--primary-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.search-group-box {
+  margin-bottom: 1.2rem;
+}
+
+.search-group-box input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-blue);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  background: #f7fafc;
+  transition: all 0.2s;
+}
+
+.search-group-box input:focus {
+  background: white;
+  border-color: var(--sky-blue);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+.grupo-materia-header {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  padding: 10px 4px 4px 4px;
+  margin-top: 5px;
+}
+
+.grupo-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: all 0.15s;
+}
+
+.grupo-btn:hover {
+  background: var(--light-sky);
+  border-color: var(--border-blue);
+}
+
+.grupo-btn-activo {
+  background: var(--sky-blue) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+
+.grupo-count {
+  font-size: 0.72rem;
+  background: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--primary-blue);
+}
+.grupo-btn-activo .grupo-count { background: rgba(255,255,255,0.25); color: white; }
+
+/* --- SECCIÓN PRINCIPAL Y TABLAS --- */
+.content-panel { display: flex; flex-direction: column; gap: 1rem; }
+.hero-section { display: flex; justify-content: space-between; align-items: center; }
+.hero-section h1 { font-size: 1.4rem; color: var(--primary-blue); }
+.subtitle { font-size: 0.88rem; color: #718096; }
+
+.action-buttons { display: flex; gap: 8px; }
+.save-btn { background: var(--sky-blue); color: white; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.reset-btn { background: #e2e8f0; color: #4a5568; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.save-btn:hover { background: var(--primary-blue); }
+
+.table-wrapper {
+  background: white;
+  border-radius: var(--radius-normal);
+  border: 1px solid var(--border-blue);
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+}
+
+.grades-table { width: 100%; border-collapse: collapse; }
+.grades-table th {
+  background: #f7fafc;
+  color: var(--primary-blue);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 14px;
+  border-bottom: 2px solid var(--border-blue);
+}
+
+.grades-table td { padding: 12px 14px; border-bottom: 1px solid #edf2f7; font-size: 0.88rem; }
+
+/* Inputs Estilizados */
+.nota-input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid var(--border-blue);
+  border-radius: 4px;
+  text-align: center;
+  font-family: inherit;
+  font-weight: 700;
+}
+.nota-input:focus {
+  outline: none;
+  border-color: var(--sky-blue);
+  box-shadow: 0 0 0 3px var(--light-sky);
+}
+
+/* Celdas Alumnos */
+.student-cell { display: flex; align-items: center; gap: 10px; }
+.student-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--light-sky); color: var(--primary-blue);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.75rem; border: 1px solid var(--border-blue);
+}
+.student-name { font-weight: 700; }
+.student-email { font-size: 0.72rem; color: #718096; }
+
+.grupo-tag { background: var(--light-sky); color: var(--primary-blue); padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; }
+
+.estado-badge { padding: 3px 8px; border-radius: 12px; font-size: 0.72rem; font-weight: 700; }
+.estado-aprobado { background: #c6f6d5; color: var(--success-green); }
+.estado-reprobado { background: #fed7d7; color: var(--danger-red); }
+
+/* Estados Sync */
+.row-status { font-weight: 700; font-size: 0.85rem; }
+.status-pendiente { color: #d69e2e; }
+.status-guardando { color: var(--sky-blue); }
+.status-guardado { color: var(--success-green); }
+.status-error { color: var(--danger-red); }
+
+.table-placeholder { text-align: center; padding: 3rem; color: var(--sky-blue); }
+.footer-note { margin-top: 1.5rem; display: flex; justify-content: space-between; font-size: 0.75rem; color: #718096; }
+
+.animate-fade-in { animation: fadeIn 0.3s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1024px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SchoolQuery - Consulta tus Notas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="logo _alumno_2.ico" type="image/ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 overflow-x-hidden">
+
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition">
+        <img src="logo_alummno.png" alt="SchoolQuery" class="h-16 w-auto logo-img">
+        <div>
+          <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-700 to-cyan-500 bg-clip-text text-transparent">
+            SchoolQuery
+          </h1>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-6">
+        <a href="interfaz inicio de sesion (1).html" 
+           class="hidden md:flex bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg items-center gap-2">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Iniciar Sesión</span>
+        </a>
+
+        <button onclick="toggleUserMenu()" class="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-500 text-white rounded-2xl flex items-center justify-center text-xl hover:scale-110 transition shadow-md">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="userMenu" class="hidden absolute top-24 right-8 bg-white shadow-2xl rounded-3xl w-64 py-2 z-50 border border-slate-100 animate-in fade-in zoom-in duration-200">
+    <a href="interfaz inicio de sesion (1).html" class="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition text-slate-700">
+      <i class="fas fa-sign-in-alt text-blue-600"></i> Iniciar Sesión
+    </a>
+  </div>
+
+  <section class="py-10 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="relative w-full group">
+        <div id="carousel" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 rounded-3xl shadow-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div class="min-w-full shrink-0 snap-center relative h-64 md:h-[500px] bg-slate-200">
+            <img src="Contratacion-de-estudiantes.png" alt="Innovación" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
+              <h3 class="text-3xl font-bold">Entorno de Innovación Colaborativa</h3>
+              <p class="text-blue-100 opacity-90">Desarrollando el futuro desde el INATEC.</p>
+            </div>
+          </div>
+          <div class="min-w-full shrink-0 snap-center relative h-64 md:h-[500px] bg-slate-200">
+            <img src="Foto nota en el portal.png" alt="Investigación" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
+              <h3 class="text-3xl font-bold">Investigación en Archivos Históricos</h3>
+              <p class="text-blue-100 opacity-90">Preservando el conocimiento para las nuevas generaciones.</p>
+            </div>
+          </div>
+          <div class="min-w-full shrink-0 snap-center relative h-64 md:h-[500px] bg-slate-200">
+            <img src="estudiantes_leyendo.jpg" alt="Estudio" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
+              <h3 class="text-3xl font-bold">Aprendizaje Digital en Comunidad</h3>
+              <p class="text-blue-100 opacity-90">Accede a tus recursos y calificaciones desde cualquier lugar.</p>
+            </div>
+          </div>
+        </div>
+        <button onclick="slideCarousel(-1)" class="absolute top-1/2 -left-5 md:-left-8 transform -translate-y-1/2 bg-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-transform hover:scale-110 z-10 font-bold text-xl opacity-0 group-hover:opacity-100 duration-300">&#10094;</button>
+        <button onclick="slideCarousel(1)" class="absolute top-1/2 -right-5 md:-right-8 transform -translate-y-1/2 bg-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-transform hover:scale-110 z-10 font-bold text-xl opacity-0 group-hover:opacity-100 duration-300">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero text-white py-32 md:py-44 stars-bg relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full mb-8">
+        <i class="fas fa-graduation-cap"></i>
+        <span class="font-medium">Centro Tecnológico Juan de Dios Muñoz Reyes</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">Tus notas,<br><span class="text-cyan-300">más cerca que nunca</span></h1>
+      <p class="text-xl md:text-2xl max-w-2xl mx-auto text-blue-100 mb-12">Accede a tu historial académico de forma inmediata y segura.</p>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+        <a href="interfaz inicio de sesion (1).html" class="inline-flex items-center gap-3 bg-white text-blue-700 hover:bg-cyan-50 font-bold text-xl px-12 py-6 rounded-3xl transition-all duration-300 hover:scale-110 shadow-2xl">
+          <i class="fas fa-sign-in-alt"></i> Iniciar Sesión Ahora
+        </a>
+        <a href="#info" class="text-white border-b-2 border-white/30 hover:border-white transition-all pb-1 font-medium">Explorar Detalles</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-white mb-4">Conoce nuestra Plataforma</h2>
+        <p class="text-slate-400">Mira este breve video sobre cómo SchoolQuery está transformando la gestión educativa en León.</p>
+      </div>
+      <div class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-800">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="SchoolQuery Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-blue-700 text-white">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="hover:scale-105 transition-transform">
+        <div class="text-4xl font-bold mb-2">2,500+</div>
+        <div class="text-blue-100 text-sm uppercase tracking-wide">Estudiantes</div>
+      </div>
+      <div class="hover:scale-105 transition-transform">
+        <div class="text-4xl font-bold mb-2">15k+</div>
+        <div class="text-blue-100 text-sm uppercase tracking-wide">Consultas/Mes</div>
+      </div>
+      <div class="hover:scale-105 transition-transform">
+        <div class="text-4xl font-bold mb-2">99.9%</div>
+        <div class="text-blue-100 text-sm uppercase tracking-wide">Disponibilidad</div>
+      </div>
+      <div class="hover:scale-105 transition-transform">
+        <div class="text-4xl font-bold mb-2">24/7</div>
+        <div class="text-blue-100 text-sm uppercase tracking-wide">Acceso Seguro</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-slate-800 mb-16">¿Cómo funciona?</h2>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="relative">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">1</div>
+          <h4 class="font-bold text-xl mb-2">Accede</h4>
+          <p class="text-slate-500 text-sm">Entra con tu usuario y contraseña institucional.</p>
+        </div>
+        <div class="relative">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">2</div>
+          <h4 class="font-bold text-xl mb-2">Selecciona</h4>
+          <p class="text-slate-500 text-sm">Elige el periodo académico que deseas consultar.</p>
+        </div>
+        <div class="relative">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">3</div>
+          <h4 class="font-bold text-xl mb-2">Visualiza</h4>
+          <p class="text-slate-500 text-sm">Mira tus calificaciones detalladas por asignatura.</p>
+        </div>
+        <div class="relative">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">4</div>
+          <h4 class="font-bold text-xl mb-2">Descarga</h4>
+          <p class="text-slate-500 text-sm">Obtén tu reporte oficial en formato PDF al instante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="info" class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center mb-20">
+        <div>
+          <h2 class="text-4xl font-bold text-slate-800 mb-8">¿Quiénes Somos?</h2>
+          <p class="text-lg text-slate-600 leading-relaxed mb-6">
+            Somos un equipo de estudiantes del <span class="font-semibold text-blue-700">Centro Tecnológico Juan de Dios Muñoz Reyes</span> comprometidos con la modernización educativa. 
+          </p>
+          <p class="text-lg text-slate-600 leading-relaxed">
+            SchoolQuery nace de la necesidad de tener un portal ágil donde la comunidad educativa pueda gestionar su información académica sin barreras.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-6">
+          <div class="bg-white p-8 rounded-3xl shadow-sm border-l-4 border-blue-600">
+            <h3 class="text-xl font-bold text-blue-700 mb-2">Nuestra Misión</h3>
+            <p class="text-slate-600 text-sm italic">"Facilitar el acceso a la información académica mediante herramientas digitales innovadoras que empoderen al estudiante."</p>
+          </div>
+          <div class="bg-white p-8 rounded-3xl shadow-sm border-l-4 border-cyan-500">
+            <h3 class="text-xl font-bold text-cyan-600 mb-2">Nuestra Visión</h3>
+            <p class="text-slate-600 text-sm italic">"Ser el portal de consulta líder en los centros tecnológicos de Nicaragua, reconocido por su seguridad y eficiencia."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">Nuestros Valores</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center p-6 bg-slate-50 rounded-3xl">
+          <i class="fas fa-lightbulb text-3xl text-blue-600 mb-4"></i>
+          <h4 class="font-bold">Innovación</h4>
+        </div>
+        <div class="text-center p-6 bg-slate-50 rounded-3xl">
+          <i class="fas fa-user-shield text-3xl text-blue-600 mb-4"></i>
+          <h4 class="font-bold">Integridad</h4>
+        </div>
+        <div class="text-center p-6 bg-slate-50 rounded-3xl">
+          <i class="fas fa-handshake text-3xl text-blue-600 mb-4"></i>
+          <h4 class="font-bold">Compromiso</h4>
+        </div>
+        <div class="text-center p-6 bg-slate-50 rounded-3xl">
+          <i class="fas fa-award text-3xl text-blue-600 mb-4"></i>
+          <h4 class="font-bold">Excelencia</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gradient-to-b from-slate-50 to-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-slate-800 mb-16">Ventajas de usar SchoolQuery</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="feature-card bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="w-20 h-20 bg-cyan-100 text-cyan-600 rounded-3xl flex items-center justify-center text-5xl mb-8">⚡</div>
+          <h3 class="text-2xl font-semibold mb-4">Rapidez</h3>
+          <p class="text-slate-600">Olvídate de las esperas. Tus notas están listas en cuanto el docente las sube.</p>
+        </div>
+        <div class="feature-card bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center text-5xl mb-8">🛡️</div>
+          <h3 class="text-2xl font-semibold mb-4">Seguridad</h3>
+          <p class="text-slate-600">Acceso cifrado y personal. Tu privacidad es nuestra prioridad número uno.</p>
+        </div>
+        <div class="feature-card bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="w-20 h-20 bg-sky-100 text-sky-600 rounded-3xl flex items-center justify-center text-5xl mb-8"><i class="fas fa-mobile-alt"></i></div>
+          <h3 class="text-2xl font-semibold mb-4">Multiplataforma</h3>
+          <p class="text-slate-600">Consulta desde tu teléfono, tablet o computadora sin perder funciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16">Lo que dicen los estudiantes</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700">
+          <p class="italic mb-6 text-slate-300">"SchoolQuery me ha ahorrado mucho tiempo. Ya no tengo que ir a registro a preguntar por mis notas, lo veo desde mi casa."</p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center font-bold text-xl">M</div>
+            <div>
+              <h5 class="font-bold">Marcos Rodríguez</h5>
+              <p class="text-xs text-slate-400">Estudiante de Computación</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700">
+          <p class="italic mb-6 text-slate-300">"La interfaz es súper moderna y fácil de usar. Es lo que nuestro centro necesitaba hace mucho tiempo."</p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center font-bold text-xl">L</div>
+            <div>
+              <h5 class="font-bold">Lucía Méndez</h5>
+              <p class="text-xs text-slate-400">Estudiante de Contabilidad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-slate-800 mb-12">Preguntas Frecuentes</h2>
+      <div class="space-y-6">
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition">
+          <h4 class="font-bold text-blue-700 text-lg mb-2">¿Cómo recupero mi contraseña?</h4>
+          <p class="text-slate-600">Visita el departamento de Registro Académico con tu identificación oficial para generar un nuevo PIN.</p>
+        </div>
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition">
+          <h4 class="font-bold text-blue-700 text-lg mb-2">¿Puedo descargar mi reporte de notas?</h4>
+          <p class="text-slate-600">¡Sí! Dentro de la sección "Visualizar Notas" encontrarás un botón para generar tu reporte en formato PDF.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-slate-900 text-slate-400 py-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <img src="logo_alummno.png" alt="SchoolQuery" class="h-12 w-auto">
+          <h3 class="text-2xl font-bold text-white">SchoolQuery</h3>
+        </div>
+        <p class="text-sm leading-relaxed">
+          Transformando la educación técnica en Nicaragua a través de la digitalización y la transparencia académica.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Navegación</h4>
+        <ul class="space-y-4 text-sm">
+          <li><a href="index.html" class="hover:text-blue-400 transition">Inicio</a></li>
+          <li><a href="perfil.html" class="hover:text-blue-400 transition">Mi Perfil</a></li>
+          <li><a href="ajustes.html" class="hover:text-blue-400 transition">Ajustes</a></li>
+          <li><a href="interfaz inicio de sesion (1).html" class="hover:text-blue-400 transition">Portal de Acceso</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-widest">Contacto</h4>
+        <ul class="space-y-4 text-sm">
+          <li><i class="fas fa-map-marker-alt mr-2 text-blue-500"></i> Reparto UTRETCH, León, Nicaragua</li>
+          <li><i class="fas fa-phone mr-2 text-blue-500"></i> +505 8323-4867</li>
+          <li><i class="fas fa-envelope mr-2 text-blue-500"></i> schoolquery1@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 pt-12 border-t border-slate-800 text-center">
+      <p class="mb-2">© 2026 SchoolQuery - INATEC Tecnológico Nacional</p>
+      <div class="text-xs mt-4 opacity-40">Diseñado para la comunidad académica del Centro Juan de Dios Muñoz Reyes.</div>
+    </div>
+  </footer>
+
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-blue-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-700 transition-all hover:scale-110 active:scale-95 z-40">
+    <i class="fas fa-arrow-up text-xl"></i>
+  </button>
+
+  <script src="script_index.js"></script>
+</body>
+</html>

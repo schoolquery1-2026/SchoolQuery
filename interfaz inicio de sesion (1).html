@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SchoolQuery | Inicio de Sesión</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="icon" href="logo _alumno_2.ico" type="image/ico">
+<link rel="stylesheet" href="style5.css">
+</head>
+<body>
+
+  <div id="loginScreen">
+    <div class="login-card">
+
+      <div class="login-logo">
+        <div class="login-logo-icon">
+          <i class="fas fa-book-open-reader"></i>
+        </div>
+        <div>
+          <h1>SchoolQuery</h1>
+          <p>gestión educativa · INATEC</p>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="loginEmail">Correo electrónico</label>
+        <div class="input-wrap">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="loginEmail"
+                 placeholder="usuario@inatec.edu.ni"
+                 autocomplete="email">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="loginPass">Contraseña</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="loginPass"
+                 placeholder="Mínimo 6 caracteres"
+                 autocomplete="current-password">
+        </div>
+      </div>
+
+      <label class="terms-check" for="termsCheckbox">
+        <input type="checkbox" id="termsCheckbox">
+        <span>He leído y acepto los
+          <a href="#" onclick="event.preventDefault(); window.abrirTerminos()">Términos y Condiciones</a>
+          y la
+          <a href="#" onclick="event.preventDefault(); window.abrirPrivacidad()">Política de Privacidad</a>
+        </span>
+      </label>
+
+      <button class="btn-login" id="btnLoginSubmit">
+        <i class="fas fa-arrow-right-to-bracket"></i> Ingresar al sistema
+      </button>
+
+      <div class="login-links">
+        <a href="#" onclick="event.preventDefault(); window.handleForgotPassword()">¿Olvidaste tu contraseña?</a>
+        <a href="#" onclick="event.preventDefault(); window.contactAdmin()">Contactar admin</a>
+        <a href="#" onclick="event.preventDefault(); window.abrirTerminos()">Términos y Condiciones</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal para términos y privacidad -->
+  <div id="modalOverlay" class="modal-overlay" style="display:none;"
+       onclick="window.cerrarModal(event)">
+    <div class="modal-dialog">
+      <button class="modal-close" onclick="window.cerrarModalDirecto()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script type="module" src="funcione (1).js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    color: #000000;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* HEADER - fondo blanco/gris */
+  header {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  /* TODO EL LOGO COMPLETO con fondo azul oscuro */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #003366, #002244);
+    padding: 8px 30px 8px 25px;
+    border-radius: 60px;
+    transition: all 0.3s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, #004080, #003366);
+  }
+
+  .logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+
+  .logo-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .welcome-badge {
+    background: #f1f5f9;
+    padding: 8px 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .welcome-badge i {
+    font-size: 1.2rem;
+    color: #0284c7;
+  }
+
+  .welcome-text {
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .welcome-name {
+    font-weight: 800;
+    color: #0284c7;
+    font-size: 1rem;
+  }
+
+  .header-badge {
+    background: #f1f5f9;
+    color: #000000;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .header-badge i {
+    color: #0284c7;
+  }
+
+  .btn-cerrar-sesion {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-cerrar-sesion:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+  }
+
+  .btn-cerrar-sesion:active {
+    transform: translateY(0);
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 24px;
+  }
+
+  /* sección hero */
+  .hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    gap: 20px;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #bae6fd;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h1 i {
+    color: #0284c7;
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    color: #334155;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+
+  .subtitle i {
+    color: #0284c7;
+  }
+
+  /* ALERTA CARD */
+  .warning-card {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-left: 6px solid #f59e0b;
+    border-radius: 20px;
+    padding: 18px 28px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .warning-icon {
+    font-size: 2.2rem;
+  }
+
+  .warning-text {
+    font-weight: 700;
+    color: #92400e;
+    background: #fff0d6;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-size: 0.95rem;
+  }
+
+  .warning-message {
+    flex: 1;
+    font-weight: 600;
+    color: #78350f;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .warning-message strong {
+    background: #fde68a;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+  }
+
+  /* Resumen cards */
+  .resumen-cards {
+    display: flex;
+    gap: 20px;
+  }
+
+  .stat {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    padding: 12px 24px;
+    border-radius: 40px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid #bae6fd;
+    transition: all 0.3s ease;
+  }
+
+  .stat:hover {
+    transform: translateY(-2px);
+    border-color: #38bdf8;
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+  }
+
+  .stat i {
+    color: #0284c7;
+    font-size: 1.1rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0284c7;
+  }
+
+  .stat span:last-child {
+    color: #000000;
+  }
+
+  /* TABLA */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 24px;
+    background: white;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+  }
+
+  .grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    min-width: 720px;
+  }
+
+  .grades-table th {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    color: #000000;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 18px 12px;
+    text-align: center;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .grades-table th i {
+    margin-right: 8px;
+    font-size: 0.9rem;
+    color: #0284c7;
+  }
+
+  .grades-table td {
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid #e9edf2;
+    background-color: white;
+    transition: background 0.2s;
+    font-weight: 500;
+    color: #000000;
+  }
+
+  .grades-table tr:hover td {
+    background: #f0f9ff;
+  }
+
+  .subject-cell {
+    font-weight: 700;
+    color: #000000;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .teacher-name {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #475569;
+    margin-top: 5px;
+  }
+
+  .grade-number {
+    font-weight: 700;
+    background: #f1f5f9;
+    display: inline-block;
+    min-width: 55px;
+    padding: 5px 12px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    color: #000000;
+  }
+
+  .promedio-highlight {
+    font-weight: 800;
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+    border-radius: 40px;
+    padding: 5px 12px;
+    display: inline-block;
+    color: #0284c7;
+  }
+
+  .aprobado {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    color: #15803d;
+    font-weight: 700;
+    border-radius: 40px;
+    padding: 6px 16px;
+    display: inline-block;
+    font-size: 0.8rem;
+  }
+
+  .reprobado {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    color: #b91c1c;
+    font-weight: 700;
+    border-radius: 40px;
+    padding: 6px 16px;
+    display: inline-block;
+    font-size: 0.8rem;
+  }
+
+  .footer-note {
+    margin-top: 36px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #000000;
+    border-top: 1px solid #bae6fd;
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-weight: 500;
+  }
+
+  .tooltip-icon {
+    background: #e0f2fe;
+    border-radius: 60px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: help;
+    transition: all 0.2s;
+  }
+
+  .tooltip-icon:hover {
+    background: #bae6fd;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 780px) {
+    .container {
+      padding: 0 16px;
+    }
+    h1 {
+      font-size: 1.7rem;
+    }
+    .hero-section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .warning-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .logo-text {
+      font-size: 1.3rem;
+    }
+    .logo img {
+      width: 35px;
+      height: 35px;
+    }
+    .logo {
+      padding: 5px 20px 5px 15px;
+    }
+    .resumen-cards {
+      flex-wrap: wrap;
+    }
+    .header-right {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }

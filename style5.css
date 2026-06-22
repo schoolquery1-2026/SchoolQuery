@@ -1,0 +1,347 @@
+/* Esto hace que el scrollbar sea visible y estilizado en todos los navegadores */
+    main::-webkit-scrollbar {
+      width: 10px;
+    }
+    main::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    main::-webkit-scrollbar-thumb {
+      background: #888; 
+      border-radius: 5px;
+    }
+    main::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand:        #1a6fc4;
+      --brand-dark:   #1359a0;
+      --brand-light:  #e8f2fd;
+      --surface:      #ffffff;
+      --bg:           #f0f4f9;
+      --text:         #0f1b2d;
+      --text-muted:   #5a6b80;
+      --border:       #d4dde8;
+      --danger:       #c0392b;
+      --radius:       12px;
+      --radius-sm:    8px;
+      --shadow:       0 4px 24px rgba(15,27,45,.10), 0 1px 4px rgba(15,27,45,.06);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      /* Subtle grid pattern */
+      background-image:
+        linear-gradient(rgba(26,111,196,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,111,196,.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ── Login card ── */
+    .login-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem 2.25rem 2rem;
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Logo / header ── */
+    .login-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 2rem;
+    }
+    .login-logo-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--brand);
+      flex-shrink: 0;
+    }
+    .login-logo h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    .login-logo p {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── Form fields ── */
+    .form-field {
+      margin-bottom: 1.1rem;
+    }
+    .form-field label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: .01em;
+    }
+    .input-wrap {
+      position: relative;
+    }
+    .input-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: .85rem;
+      pointer-events: none;
+    }
+    .input-wrap input {
+      width: 100%;
+      padding: .7rem .9rem .7rem 2.5rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: .92rem;
+      color: var(--text);
+      background: #fafbfc;
+      transition: border-color .18s, box-shadow .18s, background .18s;
+      outline: none;
+    }
+    .input-wrap input:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(26,111,196,.13);
+      background: var(--surface);
+    }
+    .input-wrap input::placeholder { color: #aab4be; }
+
+    /* ── Terms checkbox ── */
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 1.2rem 0 1.4rem;
+      cursor: pointer;
+    }
+    .terms-check input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin-top: 1px;
+      accent-color: var(--brand);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .terms-check span {
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .terms-check a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .terms-check a:hover { text-decoration: underline; }
+
+    /* ── Submit button ── */
+    .btn-login {
+      width: 100%;
+      padding: .82rem;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .18s, transform .1s, opacity .18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: .01em;
+    }
+    .btn-login:hover:not(:disabled) { background: var(--brand-dark); }
+    .btn-login:active:not(:disabled) { transform: scale(.98); }
+    .btn-login:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+    /* ── Footer links ── */
+    .login-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
+    .login-links a {
+      font-size: .78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .login-links a:hover { color: var(--brand); }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,20,40,.48);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 1.5rem;
+      backdrop-filter: blur(2px);
+    }
+    .modal-dialog {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 2rem 2rem 1.75rem;
+      max-width: 500px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    .modal-dialog h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .modal-dialog p, .modal-dialog li {
+      font-size: .88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .modal-dialog ul { padding-left: 1.2rem; margin: .5rem 0 .75rem; }
+    .modal-dialog li { margin-bottom: .4rem; }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      line-height: 1;
+      transition: background .15s;
+    }
+    .modal-close:hover { background: var(--bg); color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .login-card { padding: 2rem 1.5rem 1.75rem; }
+    }
+
+    /* ── Estilos optimizados para las tablas del Dashboard Administrativo ── */
+    #tabla_estudiantes_dashboard table,
+    #tabla_maestros_dashboard table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--surface);
+      color: var(--text);
+    }
+
+    #tabla_estudiantes_dashboard thead,
+    #tabla_maestros_dashboard thead {
+      background-color: var(--brand-light); /* Fondo azul sutil y limpio */
+    }
+
+/* ── Estilos optimizados para las tablas del Dashboard Administrativo ── */
+#tabla_estudiantes_dashboard table,
+#tabla_maestros_dashboard table,
+#tabla_notas_dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+#tabla_estudiantes_dashboard thead,
+#tabla_maestros_dashboard thead,
+#tabla_notas_dashboard thead {
+  background-color: var(--brand-light); /* Fondo azul sutil y limpio */
+}
+
+#tabla_estudiantes_dashboard th,
+#tabla_maestros_dashboard th,
+#tabla_notas_dashboard th {
+  color: var(--text); /* Color oscuro principal para máxima legibilidad */
+  font-size: 0.85rem;  /* Letra un poco más grande y nítida */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 2px solid var(--border);
+  text-align: left;
+}
+
+#tabla_estudiantes_dashboard td,
+#tabla_maestros_dashboard td,
+#tabla_notas_dashboard td {
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;  /* Tamaño optimizado para la lectura de datos */
+  color: var(--text);  /* Texto oscuro de alto contraste sobre fondo blanco */
+  font-weight: 500;    /* Peso ligeramente mayor para definir bien los caracteres */
+}
+
+#tabla_estudiantes_dashboard tr:hover,
+#tabla_maestros_dashboard tr:hover,
+#tabla_notas_dashboard tr:hover {
+  background-color: #eaf1f9; /* Efecto hover elegante y visible */
+  transition: background-color 0.15s ease;
+}
+.swal2-popup {
+    border: 3px solid #38bdf8;
+    background: linear-gradient(
+        135deg,
+        #eff6ff 0%,
+        #e0f2fe 50%,
+        #f0f9ff 100%
+    );
+    border-radius: 24px !important;
+    box-shadow: 0 20px 45px rgba(14,165,233,.25) !important;
+}
+
+.swal2-title {
+    color: #0369a1 !important;
+    font-weight: 800 !important;
+}
+
+.swal2-confirm {
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #06b6d4
+    ) !important;
+    border: none !important;
+    box-shadow: 0 8px 20px rgba(37,99,235,.35);
+}

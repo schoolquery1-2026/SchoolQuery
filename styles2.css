@@ -1,0 +1,58 @@
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    .stars-bg {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stars-bg::before,
+    .stars-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .stars-bg::before {
+      background: radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px);
+      background-size: 70px 70px;
+      animation: twinkle 7s infinite alternate ease-in-out;
+      opacity: 0.5;
+    }
+    
+    .stars-bg::after {
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px);
+      background-size: 110px 110px;
+      animation: twinkle 11s infinite alternate ease-in-out;
+      opacity: 0.4;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.75; }
+    }
+
+    .login-card {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+    
+    .input-focus:focus {
+      box-shadow: 0 0 0 4px rgba(103, 232, 249, 0.3);
+      transform: scale(1.03);
+    }

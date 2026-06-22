@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>SchoolQuery · Mis Notas 2026</title>
+<link rel="stylesheet" href="stile3.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link rel="icon" href="logo _alumno_2.ico" type="image/ico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Firebase modules -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyDAuN2EhtFPU5z-juSI52z1SsqYCzI1i5k",
+    authDomain: "schoolquery-215c4.firebaseapp.com",
+    projectId: "schoolquery-215c4",
+    storageBucket: "schoolquery-215c4.firebasestorage.app",
+    messagingSenderId: "694816390315",
+    appId: "1:694816390315:web:ce0b9dccaf9c1897d6cbee",
+    measurementId: "G-Y2XHE7XQ2R"
+  };
+  
+  // Inicializar Firebase
+  const app = initializeApp(firebaseConfig);
+  window.firestoreDB = getFirestore(app);
+  window.auth = getAuth(app);
+  console.log("✅ Firebase inicializado correctamente");
+  
+  // Función para cerrar sesión con confirmación
+  window.cerrarSesion = function() {
+    if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
+      signOut(window.auth).then(() => {
+        window.location.href = "index.html";
+      }).catch((error) => {
+        console.error("Error al cerrar sesión:", error);
+        alert("Error al cerrar sesión. Por favor, intenta nuevamente.");
+      });
+    }
+  };
+  
+  // Mostrar nombre del usuario al cargar
+  onAuthStateChanged(window.auth, (user) => {
+    if (user && user.email) {
+      const nombreUsuario = user.email.split('@')[0];
+      const bienvenidaSpan = document.getElementById('userName');
+      if (bienvenidaSpan) {
+        bienvenidaSpan.textContent = nombreUsuario.charAt(0).toUpperCase() + nombreUsuario.slice(1);
+      }
+    }
+  });
+</script>
+<script src="funcion_principal.js"></script>
+<style>
+  /* Reset y estilos base mejorados */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    min-height: 100vh;
+  }
+  
+  /* Header mejorado con fondo que resalta el logo */
+  header {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-bottom: 3px solid #0284c7;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #ffffff, #f1f5f9);
+    padding: 8px 20px 8px 15px;
+    border-radius: 60px;
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.15);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+  }
+  
+  .logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+  
+  .logo-text {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: -0.5px;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .welcome-badge {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    padding: 10px 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+  
+  .welcome-badge i {
+    font-size: 1.2rem;
+    color: #0284c7;
+  }
+  
+  .welcome-text {
+    color: #334155;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .welcome-name {
+    font-weight: 800;
+    color: #000000;
+    font-size: 1rem;
+  }
+  
+  .header-badge {
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+    padding: 10px 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .btn-cerrar-sesion {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .btn-cerrar-sesion:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+  }
+  
+  .btn-cerrar-sesion:active {
+    transform: translateY(0);
+  }
+  
+  /* Contenedor principal */
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 40px;
+  }
+  
+  /* Hero section mejorada */
+  .hero-section {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 35px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+  }
+  
+  .hero-section h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .hero-section h1 i {
+    color: #0284c7;
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    color: #475569;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+  
+  .resumen-cards {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .stat {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    padding: 15px 25px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+  }
+  
+  .stat:hover {
+    transform: translateY(-3px);
+    border-color: #38bdf8;
+    box-shadow: 0 6px 15px rgba(56, 189, 248, 0.15);
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0284c7;
+    display: block;
+  }
+  
+  .stat span:last-child {
+    color: #000000;
+    font-weight: 600;
+  }
+  
+  /* Warning card mejorada */
+  .warning-card {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-radius: 20px;
+    padding: 18px 25px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 5px solid #f59e0b;
+  }
+  
+  .warning-icon {
+    font-size: 1.8rem;
+  }
+  
+  .warning-message {
+    color: #92400e;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  /* Tabla mejorada */
+  .table-wrapper {
+    background: white;
+    border-radius: 24px;
+    overflow-x: auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
+  }
+  
+  .grades-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .grades-table th {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    padding: 18px 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .grades-table th i {
+    margin-right: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .grades-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #000000;
+    font-weight: 500;
+  }
+  
+  .grades-table tr:hover {
+    background: #f8fafc;
+  }
+  
+  /* Badges de estado */
+  .estado-aprobado {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .estado-reprobado {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  /* Footer mejorado */
+  .footer-note {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .tooltip-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #000000;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: help;
+    transition: color 0.3s;
+  }
+  
+  .tooltip-icon:hover {
+    color: #0284c7;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+    }
+    
+    header {
+      padding: 15px 20px;
+    }
+    
+    .hero-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .resumen-cards {
+      justify-content: center;
+    }
+    
+    .logo-text {
+      font-size: 1.3rem;
+    }
+    
+    .logo {
+      padding: 5px 15px 5px 10px;
+    }
+    
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .header-right {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .welcome-badge {
+      padding: 6px 12px;
+    }
+    
+    .btn-cerrar-sesion {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo_alummno.png" alt="Logo SchoolQuery">
+    <span class="logo-text">SchoolQuery</span>
+  </div>
+  <div class="header-right">
+    <div class="welcome-badge">
+      <i class="fas fa-user-graduate"></i>
+      <span class="welcome-text">Bienvenido,</span>
+      <span class="welcome-name" id="userName">Estudiante</span>
+    </div>
+    <div class="header-badge">
+      <i class="fas fa-calendar-alt"></i>
+      <span>2026</span>
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">
+      <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+    </button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="hero-section">
+    <div>
+      <h1>
+        <i class="fas fa-chart-line"></i>
+        Mis Notas
+      </h1>
+      <div class="subtitle">
+        <i class="fas fa-clock"></i>
+        Consulta tus calificaciones — Seguimiento 2026
+      </div>
+    </div>
+    <div class="resumen-cards">
+      <div class="stat">
+        <i class="fas fa-book-open" style="color: #0284c7; font-size: 1.2rem;"></i>
+        <span class="stat-value" id="totalMaterias">0</span>
+        <span>materias</span>
+      </div>
+      <div class="stat">
+        <i class="fas fa-check-circle" style="color: #22c55e; font-size: 1.2rem;"></i>
+        <span class="stat-value" id="aprobadasCount">0</span>
+        <span>aprobadas</span>
+      </div>
+      <div class="stat">
+        <i class="fas fa-star" style="color: #fbbf24; font-size: 1.2rem;"></i>
+        <span class="stat-value" id="promedioGeneral">0.0</span>
+        <span>promedio</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-card">
+    <div class="warning-icon">📢</div>
+    <div class="warning-message">
+      <span><strong>Estado académico:</strong></span>
+      <span class="warning-text" id="estadoTexto">🔄 Cargando notas del estudiante...</span>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="grades-table" id="notasTable">
+      <thead>
+        <tr>
+          <th><i class="fas fa-book"></i> Asignatura</th>
+          <th><i class="fas fa-file-alt"></i> 1er Parcial</th>
+          <th><i class="fas fa-file-alt"></i> 2do Parcial</th>
+          <th><i class="fas fa-flag-checkered"></i> Final</th>
+          <th><i class="fas fa-calculator"></i> Promedio</th>
+          <th><i class="fas fa-clipboard-list"></i> Estado</th>
+        </tr>
+      </thead>
+      <tbody id="tablaNotasBody">
+        <tr>
+          <td colspan="6" style="text-align: center; padding: 60px; color: #64748b;">
+            <i class="fas fa-spinner fa-pulse" style="font-size: 2rem; margin-bottom: 15px; display: block;"></i>
+            Cargando calificaciones...
+           </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-note">
+    <span class="tooltip-icon" title="El promedio se calcula como (Parcial1 + Parcial2 + Final) / 3">
+      <i class="fas fa-chart-simple"></i> Promedio = (P1 + P2 + Final) / 3
+    </span>
+    <span class="tooltip-icon" title="Calificación mínima para aprobar es 70 puntos">
+      <i class="fas fa-check-circle"></i> Aprobado desde ≥ 70 pts
+    </span>
+    <span class="tooltip-icon" title="SchoolQuery - Sistema de gestión académica">
+      <i class="fas fa-school"></i> Ciclo 2026 · SchoolQuery
+    </span>
+  </div>
+</div>
+
+</body>
+</html>
